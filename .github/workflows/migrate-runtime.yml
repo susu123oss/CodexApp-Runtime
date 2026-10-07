@@ -1,0 +1,63 @@
+name: Migrate Runtime Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_repo:
+        description: Private source repository
+        required: true
+        default: susu123oss/Codex-MT
+      tag:
+        description: Runtime release tag
+        required: true
+        default: runtime-theos-57833c465b8b
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download source Runtime assets
+        env:
+          GH_TOKEN: ${{ secrets.SOURCE_REPO_TOKEN }}
+          SOURCE_REPO: ${{ inputs.source_repo }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          mkdir -p runtime-assets
+          gh release download "$TAG" --repo "$SOURCE_REPO" --dir runtime-assets \
+            --pattern 'TheosRuntime.tar.gz.part*' \
+            --pattern 'TheosRuntime.bundle.json'
+          test "$(find runtime-assets -type f | wc -l)" -eq 6
+          ls -lh runtime-assets
+
+      - name: Create destination release when needed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1 || \
+            gh release create "$TAG" --repo "${{ github.repository }}" \
+              --title "Theos Runtime $TAG" --prerelease \
+              --notes 'CodexApp public Theos Runtime assets.'
+
+      - name: Replace destination assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          for file in runtime-assets/*; do
+            name="$(basename "$file")"
+            gh release delete-asset "$TAG" "$name" --repo "${{ github.repository }}" -y >/dev/null 2>&1 || true
+          done
+          gh release upload "$TAG" runtime-assets/* --repo "${{ github.repository }}" --clobber
+
+      - name: Verify destination assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          count="$(gh release view "$TAG" --repo "${{ github.repository }}" --json assets --jq '.assets | length')"
+          test "$count" -eq 6
+          gh release view "$TAG" --repo "${{ github.repository }}" --json assets --jq '.assets[] | [.name,.size] | @tsv'
