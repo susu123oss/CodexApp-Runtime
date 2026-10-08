@@ -5,17 +5,17 @@
   ],
   "runtimes": {
     "reverse_tools": {
-      "archive_sha256": "347d67d7210655db42f469ea276a79d07dbce69865048d77629cc62028948982",
-      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-reverse-tools-61a41e5444b9/ReverseToolsRuntime.tar.gz",
-      "download_size": 15592194,
-      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-reverse-tools-61a41e5444b9/ReverseToolsRuntime.bundle.json",
+      "archive_sha256": "14df683d2e487c62efc3b00f4fdb496dac24de7bdadd67f1276e31673838f998",
+      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-reverse-tools-503e3ace61bd/ReverseToolsRuntime.tar.gz",
+      "download_size": 15627711,
+      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-reverse-tools-503e3ace61bd/ReverseToolsRuntime.bundle.json",
       "minimum_ios": "15.0",
       "radare2_ref": "04d73504aabe7b69c3d7af8ea5d0be519fd92321",
       "radare2_version": "6.2.4",
-      "revision": "61a41e5444b90c9eeccbdd14cb9efed997417b3328292d4237b3f26fc421a8de",
+      "revision": "503e3ace61bdd5ee6c87423f9941b353647255e961e56d72016ec16224fe4872",
       "runtime_format": 1,
-      "unpacked_size": 44165120,
-      "version": "runtime-reverse-tools-61a41e5444b9"
+      "unpacked_size": 44308480,
+      "version": "runtime-reverse-tools-503e3ace61bd"
     },
     "theos": {
       "archive_parts": [
