@@ -4,6 +4,19 @@
     "https://ghproxy.net/"
   ],
   "runtimes": {
+    "reverse_tools": {
+      "archive_sha256": "347d67d7210655db42f469ea276a79d07dbce69865048d77629cc62028948982",
+      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-reverse-tools-61a41e5444b9/ReverseToolsRuntime.tar.gz",
+      "download_size": 15592194,
+      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-reverse-tools-61a41e5444b9/ReverseToolsRuntime.bundle.json",
+      "minimum_ios": "15.0",
+      "radare2_ref": "04d73504aabe7b69c3d7af8ea5d0be519fd92321",
+      "radare2_version": "6.2.4",
+      "revision": "61a41e5444b90c9eeccbdd14cb9efed997417b3328292d4237b3f26fc421a8de",
+      "runtime_format": 1,
+      "unpacked_size": 44165120,
+      "version": "runtime-reverse-tools-61a41e5444b9"
+    },
     "theos": {
       "archive_parts": [
         {
