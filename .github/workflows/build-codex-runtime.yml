@@ -1,0 +1,117 @@
+name: Build Codex Runtime
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Runtime/Codex/**"
+      - ".github/workflows/build-codex-runtime.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: codex-runtime
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: macos-26
+    timeout-minutes: 360
+
+    steps:
+      - name: Check out runtime repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Select newest Xcode
+        run: |
+          latest="$(find /Applications -maxdepth 1 -type d -name 'Xcode*.app' -print | sort -V | tail -n1)"
+          sudo xcode-select -s "$latest/Contents/Developer"
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-version
+
+      - name: Install packaging tools
+        run: |
+          brew install ldid dpkg
+          ldid -h 2>&1 | head -n1 || true
+          dpkg-deb --version | head -n1
+
+      - name: Install pinned Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.95.0"
+          targets: aarch64-apple-ios
+
+      - name: Prepare Codex packaging source
+        id: meta
+        run: |
+          version="$(tr -d '[:space:]' < Runtime/Codex/package-version.txt)"
+          packaging_ref="$(tr -d '[:space:]' < Runtime/Codex/packaging-ref.txt)"
+          test -n "$version"
+          test -n "$packaging_ref"
+
+          git clone https://github.com/owngoal-dev/codex.git build/codex-packaging
+          git -C build/codex-packaging checkout --detach "$packaging_ref"
+
+          cp Runtime/Codex/0005-ios-native-posix-spawn.patch \
+             build/codex-packaging/patches/0005-ios-native-posix-spawn.patch
+
+          make -C build/codex-packaging set-version VERSION="$version"
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=runtime-codex-v$version" >> "$GITHUB_OUTPUT"
+
+      - name: Validate patch set
+        run: make -C build/codex-packaging check
+
+      - name: Prepare exact upstream source
+        run: make -C build/codex-packaging source
+
+      - name: Build Codex iOS packages
+        run: make -C build/codex-packaging debs
+
+      - name: Verify expected CodexApp asset
+        run: |
+          version="${{ steps.meta.outputs.version }}"
+          package="build/codex-packaging/build/Packages/wiki.qaq.codex_${version}_iphoneos-arm64.deb"
+          test -s "$package"
+          grep -F "wiki.qaq.codex_${version}_iphoneos-arm64.deb" \
+            build/codex-packaging/build/Packages/SHA256SUMS
+          dpkg-deb -I "$package" | sed 's/^/    /'
+
+      - name: Publish namespaced runtime release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="${{ steps.meta.outputs.version }}"
+          tag="${{ steps.meta.outputs.tag }}"
+          packages="build/codex-packaging/build/Packages"
+
+          cat > /tmp/codex-runtime-notes.md <<EOF
+          CodexApp iOS runtime package revision v${version}.
+
+          OpenAI Codex version: v0.162.1
+          Runtime fix: use Codex's native Apple posix_spawn backend on iOS so unified exec does not fall back to fork/pre_exec on pure TrollStore.
+          EOF
+
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release edit "$tag" \
+              --title "Codex Runtime v${version}" \
+              --notes-file /tmp/codex-runtime-notes.md \
+              --prerelease
+            gh release upload "$tag" "$packages"/*.deb "$packages"/SHA256SUMS --clobber
+          else
+            gh release create "$tag" \
+              --target "$GITHUB_SHA" \
+              --title "Codex Runtime v${version}" \
+              --notes-file /tmp/codex-runtime-notes.md \
+              --prerelease \
+              "$packages"/*.deb "$packages"/SHA256SUMS
+          fi
