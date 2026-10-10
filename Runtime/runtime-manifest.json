@@ -21,45 +21,45 @@
       "archive_parts": [
         {
           "name": "TheosRuntime.tar.gz.part01",
-          "sha256": "b9c782060a76d78ef689d66a651d04e6e23225450dadc109fdaa04043ce40aa2",
+          "sha256": "4bb8eea1c7f82c8a92c108abae2e50f5da8dc3589d0599060a9944a714bf26db",
           "size": 50331648,
-          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-57833c465b8b/TheosRuntime.tar.gz.part01"
+          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-11caeba3c2d0/TheosRuntime.tar.gz.part01"
         },
         {
           "name": "TheosRuntime.tar.gz.part02",
-          "sha256": "cd3b662b4d7e55d26b82995bdc2e8a850e7f02af945407cea9e0b845136a1a6d",
+          "sha256": "c4335a8e8248cbdd0f0868574b3f697bd25831693f3838fb7d8bf60952936489",
           "size": 50331648,
-          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-57833c465b8b/TheosRuntime.tar.gz.part02"
+          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-11caeba3c2d0/TheosRuntime.tar.gz.part02"
         },
         {
           "name": "TheosRuntime.tar.gz.part03",
-          "sha256": "dbc17d9d7f6c9d6452030efad5562e9ecaf76885b96817a6a1f2bc4553ae3950",
+          "sha256": "affd4b0dd336cadca5031a9cc9fc69e0e9071c978ca76c187bd53a0b9a788693",
           "size": 50331648,
-          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-57833c465b8b/TheosRuntime.tar.gz.part03"
+          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-11caeba3c2d0/TheosRuntime.tar.gz.part03"
         },
         {
           "name": "TheosRuntime.tar.gz.part04",
-          "sha256": "382aab6552f5ce169ea6a56a088376cb911a2f74703f1fc8fa4a540a1380dc34",
+          "sha256": "f70f99a16d1afbc2250166ae8bfe0a00031457c07df227f4ba8680b6b839a194",
           "size": 50331648,
-          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-57833c465b8b/TheosRuntime.tar.gz.part04"
+          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-11caeba3c2d0/TheosRuntime.tar.gz.part04"
         },
         {
           "name": "TheosRuntime.tar.gz.part05",
-          "sha256": "0ccc5fdeb05a5a6aaf08a4ee8008b6b876ad1278e632ece48f615c273366dc08",
-          "size": 23041841,
-          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-57833c465b8b/TheosRuntime.tar.gz.part05"
+          "sha256": "38b610860a9855ecb15c0c03362cac97c0a4b1e6f0b5586bd3bca239a0b8a45b",
+          "size": 23040723,
+          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-11caeba3c2d0/TheosRuntime.tar.gz.part05"
         }
       ],
-      "archive_sha256": "5689de507815931ece05786d9351b660b3582151484685e3b44db429363d329c",
-      "download_size": 224368433,
-      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-57833c465b8b/TheosRuntime.bundle.json",
-      "revision": "57833c465b8b71518a8a54ae5e3dd6414172cb339871926c9558d44baae36cc1",
+      "archive_sha256": "7197fdbee4a6e37c92a467e9f4ac7a214329048247baa4b1799ca5df4faedcc0",
+      "download_size": 224367315,
+      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-11caeba3c2d0/TheosRuntime.bundle.json",
+      "revision": "11caeba3c2d05fe6d7259cd4857901cb1d3162d143ab2c451d3dadfb485c83e8",
       "runtime_format": 11,
       "sdk": "iPhoneOS16.5.sdk",
       "sdks_ref": "0222fd5413cf4b9af096f37b4621afa2688572f7",
       "theos_ref": "dd5c14bb9d91311e221d51b5bfb8c9e5948156db",
       "unpacked_size": 978698240,
-      "version": "runtime-theos-57833c465b8b"
+      "version": "runtime-theos-11caeba3c2d0"
     }
   },
   "schema": 1
