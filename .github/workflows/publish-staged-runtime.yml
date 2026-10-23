@@ -1,0 +1,110 @@
+name: Publish Staged Runtime
+
+on:
+  push:
+    branches:
+      - 'runtime-upload/**'
+    paths:
+      - 'staged-runtime/.ready'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout staging branch
+        uses: actions/checkout@v4
+
+      - name: Reassemble and validate ReverseTools Runtime
+        id: meta
+        shell: bash
+        run: |
+          set -euo pipefail
+          META='staged-runtime/ReverseToolsRuntime.bundle.json'
+          MANIFEST='staged-runtime/runtime-manifest.json'
+          ARCHIVE='/tmp/ReverseToolsRuntime.tar.gz'
+          cat staged-runtime/ReverseToolsRuntime.tar.gz.part* > "$ARCHIVE"
+          REVISION="$(jq -r '.revision' "$META")"
+          test "${#REVISION}" -eq 64
+          TAG="runtime-reverse-tools-${REVISION:0:12}"
+          EXPECTED_SHA="$(jq -r '.archive_sha256' "$META")"
+          ACTUAL_SHA="$(sha256sum "$ARCHIVE" | awk '{print $1}')"
+          test "$EXPECTED_SHA" = "$ACTUAL_SHA"
+          EXPECTED_BYTES="$(jq -r '.archive_bytes' "$META")"
+          ACTUAL_BYTES="$(stat -c '%s' "$ARCHIVE")"
+          test "$EXPECTED_BYTES" = "$ACTUAL_BYTES"
+          MANIFEST_TAG="$(jq -r '.runtimes.reverse_tools.version' "$MANIFEST")"
+          test "$MANIFEST_TAG" = "$TAG"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "revision=$REVISION" >> "$GITHUB_OUTPUT"
+          echo "archive_sha=$ACTUAL_SHA" >> "$GITHUB_OUTPUT"
+          echo "archive_bytes=$ACTUAL_BYTES" >> "$GITHUB_OUTPUT"
+
+      - name: Create or reuse release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.meta.outputs.tag }}
+          REVISION: ${{ steps.meta.outputs.revision }}
+          ARCHIVE_SHA: ${{ steps.meta.outputs.archive_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release create "$TAG" \
+              --repo "$GITHUB_REPOSITORY" \
+              --target main \
+              --title "$TAG" \
+              --notes "CodexApp Reverse Tools Runtime update.\n\nRevision: $REVISION\nradare2: 6.2.4\nArchive SHA256: $ARCHIVE_SHA"
+          fi
+
+      - name: Upload Runtime assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.meta.outputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release upload "$TAG" \
+            /tmp/ReverseToolsRuntime.tar.gz \
+            staged-runtime/ReverseToolsRuntime.bundle.json \
+            --repo "$GITHUB_REPOSITORY" \
+            --clobber
+
+      - name: Update public Runtime manifest on main
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.meta.outputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          PATH_API="repos/$GITHUB_REPOSITORY/contents/Runtime/runtime-manifest.json"
+          CURRENT_SHA="$(gh api "$PATH_API?ref=main" --jq '.sha')"
+          CONTENT="$(base64 -w0 staged-runtime/runtime-manifest.json)"
+          jq -n \
+            --arg message "Update reverse_tools Runtime manifest to $TAG" \
+            --arg content "$CONTENT" \
+            --arg sha "$CURRENT_SHA" \
+            '{message:$message,content:$content,sha:$sha,branch:"main"}' \
+            > /tmp/manifest-update.json
+          gh api --method PUT "$PATH_API" --input /tmp/manifest-update.json >/tmp/manifest-response.json
+          jq -e '.commit.sha | length == 40' /tmp/manifest-response.json >/dev/null
+
+      - name: Verify release and manifest
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.meta.outputs.tag }}
+          EXPECTED_ARCHIVE_BYTES: ${{ steps.meta.outputs.archive_bytes }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ASSETS="$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets)"
+          ARCHIVE_BYTES="$(jq -r '.assets[] | select(.name=="ReverseToolsRuntime.tar.gz") | .size' <<<"$ASSETS")"
+          META_BYTES="$(jq -r '.assets[] | select(.name=="ReverseToolsRuntime.bundle.json") | .size' <<<"$ASSETS")"
+          test "$ARCHIVE_BYTES" = "$EXPECTED_ARCHIVE_BYTES"
+          test -n "$META_BYTES"
+          test "$META_BYTES" -gt 0
+          REMOTE_TAG="$(gh api "repos/$GITHUB_REPOSITORY/contents/Runtime/runtime-manifest.json?ref=main" --jq '.content' | tr -d '\n' | base64 -d | jq -r '.runtimes.reverse_tools.version')"
+          test "$REMOTE_TAG" = "$TAG"
+          echo "Published $TAG"
