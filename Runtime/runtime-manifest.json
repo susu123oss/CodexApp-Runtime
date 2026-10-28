@@ -377,16 +377,19 @@
       "version": "runtime-node-18.20.4-f38613c172c3"
     },
     "ollvm": {
-      "archive_sha256": "09691fcce18128dd1db6662ca30e7aa8f9132976b35270b3201ed4bc64ab184a",
-      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-ollvm-23.1.1-412b12283f56/OLLVMRuntime.tar.gz",
-      "arm64e_compatibility_status": "conservative-unvalidated",
+      "archive_sha256": "31667a83685e975dfdcd16578a0a386b7b9acc8e5f519b27f6e5d32fdee096b6",
+      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-ollvm-23.1.1-e54f2878240e/OLLVMRuntime.tar.gz",
+      "arm64e_compatibility_status": "validated",
       "arm64e_compatible_passes": [
-        "cse"
+        "cse",
+        "cie",
+        "cfe",
+        "fla"
       ],
       "build_sdk": "16.2",
       "capabilities": {
         "compiler.ollvm.frontend": {
-          "summary": "Arkari LLVM 16 clang/clang++ frontend.",
+          "summary": "Arkari LLVM 23.1.1 clang/clang++ frontend.",
           "title": "OLLVM frontend"
         },
         "compiler.ollvm.ios-artifact": {
@@ -401,13 +404,13 @@
           "title": "OLLVM iOS artifact build"
         },
         "compiler.ollvm.obfuscation": {
-          "summary": "Indirect branch/call/global, string encryption and control-flow protection passes.",
+          "summary": "Device-validated cse/cie/cfe/fla protection passes for arm64 and arm64e.",
           "title": "OLLVM protection passes"
         }
       },
       "conflicts": [],
       "display_name": "OLLVM",
-      "download_size": 36348680,
+      "download_size": 36348135,
       "group": "tools",
       "handler": "portable-v1",
       "install": {
@@ -436,7 +439,7 @@
         ]
       },
       "llvm_version": "23.1.1",
-      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-ollvm-23.1.1-412b12283f56/OLLVMRuntime.bundle.json",
+      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-ollvm-23.1.1-e54f2878240e/OLLVMRuntime.bundle.json",
       "minimum_ios": "15.0",
       "optional": true,
       "order": 30,
@@ -520,35 +523,33 @@
       ],
       "recommended_presets": [
         {
+          "id": "strong",
+          "passes": [
+            "cse",
+            "cie",
+            "cfe",
+            "fla"
+          ],
+          "status": "device-validated",
+          "title": "强力混淆（推荐）"
+        },
+        {
           "id": "balanced",
           "passes": [
-            "indbr",
-            "cse"
-          ],
-          "status": "needs-device-validation",
-          "title": "Indirect branch + string encryption"
-        },
-        {
-          "id": "cse-only",
-          "passes": [
-            "cse"
-          ],
-          "status": "needs-device-validation",
-          "title": "Conservative arm64e fallback"
-        },
-        {
-          "id": "full",
-          "passes": [
-            "indbr",
-            "icall",
-            "indgv",
             "cse",
-            "fla",
             "cie",
             "cfe"
           ],
-          "status": "needs-device-validation",
-          "title": "All available passes"
+          "status": "device-validated",
+          "title": "推荐混淆"
+        },
+        {
+          "id": "basic",
+          "passes": [
+            "cse"
+          ],
+          "status": "device-validated",
+          "title": "基础混淆"
         }
       ],
       "recommends": [
@@ -559,11 +560,17 @@
         }
       ],
       "requires": [],
-      "revision": "412b12283f56ca02b34915e316660791af100aa394b04d9d59a0c70e96d5516f",
+      "revision": "e54f2878240e8cdc9122450b9c2afd6800fbd64bca05712d512a3fb02a11e958",
       "runtime_format": 1,
       "source_branch": "llvm-23.x",
       "source_revision": "53a91b011707a645768c13e160095566d426a8d2",
-      "summary": "Arkari LLVM 16 编译器运行环境，提供多种编译期保护选项。",
+      "summary": "Arkari LLVM 23.1.1 编译器运行环境，当前提供 arm64 / arm64e 已验证的字符串、整数、浮点常量加密与控制流扁平化保护。",
+      "supported_passes": [
+        "cse",
+        "cie",
+        "cfe",
+        "fla"
+      ],
       "target_architectures": [
         "arm64",
         "arm64e"
@@ -572,9 +579,9 @@
         "symbol": "shield.lefthalf.filled",
         "tint": "purple"
       },
-      "unpacked_size": 117966621,
-      "validation_status": "needs-device-validation",
-      "version": "runtime-ollvm-23.1.1-412b12283f56"
+      "unpacked_size": 117963468,
+      "validation_status": "device-validated",
+      "version": "runtime-ollvm-23.1.1-e54f2878240e"
     },
     "python": {
       "archive_sha256": "6c5cd14ad7354cef321ab666c984f5f036317197e63f88589f24d3a705e2996c",
