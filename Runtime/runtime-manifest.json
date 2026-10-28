@@ -245,8 +245,8 @@
       "version": "runtime-core-tools-0b27a4626c41"
     },
     "node": {
-      "archive_sha256": "b8426102af2df33e619a48be2645eea5dc4ec745b12586664688fe13fedeff3e",
-      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-node-24.5.0-265154c07c13/NodeRuntime.tar.gz",
+      "archive_sha256": "1bbeaadb187a42cfa1310f497110b6c4624ea69a9cd00a393d1e6b44ce2f0567",
+      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-node-24.5.0-2a837e25f313/NodeRuntime.tar.gz",
       "capabilities": {
         "node.fetch": {
           "summary": "iOS-compatible global fetch path.",
@@ -290,7 +290,7 @@
       "conflicts": [],
       "corepack_version": "0.34.0",
       "display_name": "Node.js",
-      "download_size": 29496023,
+      "download_size": 29494560,
       "group": "tools",
       "handler": "portable-v1",
       "install": {
@@ -344,7 +344,7 @@
           "Frameworks/NodeMobile.framework/NodeMobile"
         ]
       },
-      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-node-24.5.0-265154c07c13/NodeRuntime.bundle.json",
+      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-node-24.5.0-2a837e25f313/NodeRuntime.bundle.json",
       "minimum_ios": "15.0",
       "node_version": "24.5.0",
       "npm_version": "11.5.1",
@@ -365,7 +365,7 @@
         }
       ],
       "requires": [],
-      "revision": "265154c07c138a8b7898902e459acb7643767ac1b463d21a5a7df52202900136",
+      "revision": "2a837e25f313b457de847407dc118726fd39b4dbb0beb4ed7902a32413d97179",
       "runtime_format": 1,
       "source_revision": "4608d3c670cf37b383dbe631de4992cf23da46e0",
       "summary": "Node.js 24.5.0 with npm 11.5.1, Corepack 0.34.0, pnpm/Yarn workflows, iOS-compatible fetch and child_process shims, plus iOS arm64 N-API devkit.",
@@ -373,8 +373,8 @@
         "symbol": "shippingbox.circle.fill",
         "tint": "green"
       },
-      "unpacked_size": 118625792,
-      "version": "runtime-node-24.5.0-265154c07c13"
+      "unpacked_size": 118625280,
+      "version": "runtime-node-24.5.0-2a837e25f313"
     },
     "ollvm": {
       "archive_sha256": "db77403a4290caec4d377d7880ceda5d32b32d7eeaad7b528493ea50214be33d",
