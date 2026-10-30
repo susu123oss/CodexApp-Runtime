@@ -323,7 +323,7 @@
         "probe": {
           "arguments": [
             "-e",
-            "const p=require('./lib/node_modules/npm/package.json');const c=require('./lib/node_modules/corepack/package.json');if(p.version!=='11.5.1'||c.version!=='0.34.0')process.exit(43);console.log('codex-node-runtime-ok '+process.version+' npm='+p.version+' corepack='+c.version)"
+            "const p=require('./lib/node_modules/npm/package.json');const c=require('./lib/node_modules/corepack/package.json');if(process.version!=='v24.5.0'||p.version!=='11.5.1'||c.version!=='0.34.0')process.exit(43);console.log('codex-node-runtime-ok '+process.version+' npm='+p.version+' corepack='+c.version)"
           ],
           "contains": "codex-node-runtime-ok",
           "executable": "bin/node"
