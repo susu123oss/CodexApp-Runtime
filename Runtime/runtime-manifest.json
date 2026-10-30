@@ -696,36 +696,36 @@
       "archive_parts": [
         {
           "name": "TheosRuntime.tar.gz.part01",
-          "sha256": "6e7348e8fdbb6ec912e6341d304cf14cdcf5a8a1506e94f3d9cb2ee1096b3036",
+          "sha256": "68c1ea35e3c8ac563f1bf73148eb4d8305e436b55970825b67fa85b465f054df",
           "size": 50331648,
-          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-336408a626ac/TheosRuntime.tar.gz.part01"
+          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-787697a97c96/TheosRuntime.tar.gz.part01"
         },
         {
           "name": "TheosRuntime.tar.gz.part02",
-          "sha256": "f90d39ff2bf8d55b484e1b5214bd11e688261895d39860839069ae80b362d75b",
+          "sha256": "afe8fd10ab22e88e3d23123e7369b8b51f99f491aec07b744ed05084ca8a2524",
           "size": 50331648,
-          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-336408a626ac/TheosRuntime.tar.gz.part02"
+          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-787697a97c96/TheosRuntime.tar.gz.part02"
         },
         {
           "name": "TheosRuntime.tar.gz.part03",
-          "sha256": "bd2f1c1c28e4fc827c7cebcb74f3dc91185014935161a1b39d42e7e1e053bbe3",
+          "sha256": "d2ccc82ebfeeab8b6bab2d428b79324c6d041607d9c746df43330e1b97337ff1",
           "size": 50331648,
-          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-336408a626ac/TheosRuntime.tar.gz.part03"
+          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-787697a97c96/TheosRuntime.tar.gz.part03"
         },
         {
           "name": "TheosRuntime.tar.gz.part04",
-          "sha256": "8dc31f07a75f536e63951a01eb41bba0989efbc82653b4219f7b9b42c2a326a2",
+          "sha256": "969d50f11b3210de0ba6e3bdb1164bac2eee4a849dc600df9d09897735654f98",
           "size": 50331648,
-          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-336408a626ac/TheosRuntime.tar.gz.part04"
+          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-787697a97c96/TheosRuntime.tar.gz.part04"
         },
         {
           "name": "TheosRuntime.tar.gz.part05",
-          "sha256": "8e1b1c1716866b3f53ddf7162699043d3b87c240088f01380a27bcf17cd5bd49",
-          "size": 23225753,
-          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-336408a626ac/TheosRuntime.tar.gz.part05"
+          "sha256": "86a29869309eca0a49e18b4ae21466b5caa591c82ec250565f7f4ac68deb4891",
+          "size": 23225696,
+          "url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-787697a97c96/TheosRuntime.tar.gz.part05"
         }
       ],
-      "archive_sha256": "f43509589e98549670b21a9b078bd2a541531d327ab954eb8b1915a12042ce3d",
+      "archive_sha256": "0293d2e8643cfbdb597ad7c84c7bdf6aaae2c2ece0ce83f13896aa657ec1d9a1",
       "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-336408a626ac/TheosRuntime.tar.gz",
       "capabilities": {
         "ios.compile": {
@@ -760,10 +760,11 @@
       },
       "conflicts": [],
       "display_name": "Theos",
-      "download_size": 224552345,
+      "download_size": 224552288,
       "group": "compiler",
       "handler": "theos",
-      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-336408a626ac/TheosRuntime.bundle.json",
+      "lite_adapter_revision": 19,
+      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-theos-787697a97c96/TheosRuntime.bundle.json",
       "optional": true,
       "order": 20,
       "package_schemes": [
@@ -782,7 +783,7 @@
       ],
       "recommends": [],
       "requires": [],
-      "revision": "336408a626ac18b90dada3f030c661d8c14928f4e0374411b21f8a000a411454",
+      "revision": "787697a97c9654bcafe32a2b43ac84fcc0e5e747e7a056c7209bec692f6341b9",
       "roothide_headers_ref": "ac1c4fd21214548d6d308fcb835d30df1e43953d",
       "roothide_lib_ref": "85e9b5b8aff11bbefc59525c64c8f55149926e56",
       "roothide_theos_ref": "88506b2c22e9e07dd4ed055f23c9e398a117a2c7",
@@ -796,7 +797,7 @@
         "tint": "orange"
       },
       "unpacked_size": 979927040,
-      "version": "runtime-theos-336408a626ac"
+      "version": "runtime-theos-787697a97c96"
     }
   },
   "schema": 4,
