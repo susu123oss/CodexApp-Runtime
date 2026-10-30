@@ -5,11 +5,11 @@
   ],
   "runtimes": {
     "build_tools": {
-      "archive_sha256": "8e48719bafeafdab712d9d261e549b63e30443f5d0e43d839df17088d407ac14",
-      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-build-tools-3.27.9-a7141408c23f/BuildToolsRuntime.tar.gz",
+      "archive_sha256": "5db7b364c8b1e9f95365a819a6872a00b5816d02e035551680b5ef5271f68d70",
+      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-build-tools-3.27.9-5ff3b144c29f/BuildToolsRuntime.tar.gz",
       "capabilities": {
         "build.cmake": {
-          "summary": "Configure and generate C/C++ build trees with CMake 3.27.9.",
+          "summary": "Configure and generate C/C++ build trees with CMake 3.27.9; Apple child processes use posix_spawn instead of fork.",
           "title": "CMake"
         },
         "build.cmake-ios": {
@@ -24,7 +24,7 @@
           "title": "CMake iOS build"
         },
         "build.ninja": {
-          "summary": "Execute Ninja build graphs with Ninja 1.11.1.",
+          "summary": "Execute Ninja 1.11.1 build graphs on iOS arm64; the iOS binary excludes fork-based browse mode and uses posix_spawn.",
           "title": "Ninja"
         }
       },
@@ -34,7 +34,7 @@
       },
       "conflicts": [],
       "display_name": "BuildTools",
-      "download_size": 7510020,
+      "download_size": 7504455,
       "group": "tools",
       "handler": "portable-v1",
       "install": {
@@ -49,6 +49,22 @@
           "contains": "cmake version 3.27.9",
           "executable": "bin/cmake"
         },
+        "probes": [
+          {
+            "arguments": [
+              "--version"
+            ],
+            "contains": "cmake version 3.27.9",
+            "executable": "bin/cmake"
+          },
+          {
+            "arguments": [
+              "--version"
+            ],
+            "contains": "1.11.1",
+            "executable": "bin/ninja"
+          }
+        ],
         "required_paths": [
           "bin/cmake",
           "bin/ninja",
@@ -60,7 +76,7 @@
           "bin/ninja"
         ]
       },
-      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-build-tools-3.27.9-a7141408c23f/BuildToolsRuntime.bundle.json",
+      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-build-tools-3.27.9-5ff3b144c29f/BuildToolsRuntime.bundle.json",
       "minimum_ios": "15.0",
       "optional": true,
       "order": 15,
@@ -77,15 +93,15 @@
         }
       ],
       "requires": [],
-      "revision": "a7141408c23fbb149dc5eb480a55683c674f53b52d90ae9fbfc36da4c4023204",
+      "revision": "5ff3b144c29f7b3ff14c88c4ead74fbbdb08b39d2ab9a8fda074b17636cca50f",
       "runtime_format": 1,
-      "summary": "CMake + Ninja 原生构建工具，面向 iOS 15+ arm64，纯 TrollStore 与越狱环境均可安装。",
+      "summary": "CMake 3.27.9 + Ninja 1.11.1，面向 iOS 15+ arm64；统一使用 iPhoneOS SDK，CMake/Ninja 子进程采用 posix_spawn，禁用 fork-based Ninja browse。",
       "ui": {
         "symbol": "hammer.circle.fill",
         "tint": "cyan"
       },
-      "unpacked_size": 28661248,
-      "version": "runtime-build-tools-3.27.9-a7141408c23f"
+      "unpacked_size": 28643840,
+      "version": "runtime-build-tools-3.27.9-5ff3b144c29f"
     },
     "codex": {
       "archive_sha256": "b1ef47cb6e1f0a378409f123f7bb3422b6dcaf3e69164d70709d146ad7f12155",
