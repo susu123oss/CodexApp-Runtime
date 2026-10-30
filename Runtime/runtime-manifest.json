@@ -261,15 +261,15 @@
       "version": "runtime-core-tools-0b27a4626c41"
     },
     "node": {
-      "archive_sha256": "b89a471029b5cd8256a4a321e76180e6dcf7c137831955cb98a874d47210e2b3",
-      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-node-18.20.4-f38613c172c3/NodeRuntime.tar.gz",
+      "archive_sha256": "267278d0baafac4ba2ba4a0afee65f213bb5cad6acfb045ccc1a5732a31dca9c",
+      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-node-24.5.0-e3a6c25fac33/NodeRuntime.tar.gz",
       "capabilities": {
         "node.fetch": {
           "summary": "iOS-compatible global fetch path.",
           "title": "Node fetch"
         },
         "node.javascript": {
-          "summary": "Node.js 18 JavaScript runtime.",
+          "summary": "Node.js 24 JavaScript runtime.",
           "title": "Node.js JavaScript"
         },
         "node.native-addon": {
@@ -293,20 +293,21 @@
         }
       },
       "components": {
-        "corepack": "0.28.0",
+        "corepack": "0.34.0",
         "fetch": "minipass-fetch-global",
         "native_addons": "ios-arm64-napi",
-        "node": "18.20.4",
-        "node-gyp": "10.1.0",
-        "npm": "10.7.0",
-        "npx": "10.7.0",
+        "node": "24.5.0",
+        "node-gyp": "11.2.0",
+        "node-gyp-ios-compat": "ios-subprocess-xcode-make-shell-sdkroot-v2",
+        "npm": "11.5.1",
+        "npx": "11.5.1",
         "pnpm": "via-corepack",
         "yarn": "via-corepack"
       },
       "conflicts": [],
-      "corepack_version": "0.28.0",
+      "corepack_version": "0.34.0",
       "display_name": "Node.js",
-      "download_size": 20441948,
+      "download_size": 29495021,
       "group": "tools",
       "handler": "portable-v1",
       "install": {
@@ -322,7 +323,7 @@
         "probe": {
           "arguments": [
             "-e",
-            "const fs=require('fs');const p=require('./lib/node_modules/npm/package.json');const c=require('./lib/node_modules/corepack/package.json');if(p.version!=='10.7.0'||c.version!=='0.28.0')process.exit(43);console.log('codex-node-runtime-ok '+process.version+' npm='+p.version+' corepack='+c.version)"
+            "const p=require('./lib/node_modules/npm/package.json');const c=require('./lib/node_modules/corepack/package.json');if(p.version!=='11.5.1'||c.version!=='0.34.0')process.exit(43);console.log('codex-node-runtime-ok '+process.version+' npm='+p.version+' corepack='+c.version)"
           ],
           "contains": "codex-node-runtime-ok",
           "executable": "bin/node"
@@ -360,10 +361,10 @@
           "Frameworks/NodeMobile.framework/NodeMobile"
         ]
       },
-      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-node-18.20.4-f38613c172c3/NodeRuntime.bundle.json",
+      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-node-24.5.0-e3a6c25fac33/NodeRuntime.bundle.json",
       "minimum_ios": "15.0",
-      "node_version": "18.20.4",
-      "npm_version": "10.7.0",
+      "node_version": "24.5.0",
+      "npm_version": "11.5.1",
       "optional": true,
       "order": 15,
       "provides": [
@@ -381,16 +382,16 @@
         }
       ],
       "requires": [],
-      "revision": "f38613c172c33e4ed56d4cf61640c8f20fb9cfcb4d06de477187c753d0b6a1b6",
+      "revision": "e3a6c25fac33686fb1b7e61f522204cb19b71f4fc29f627de99738cafaae3c95",
       "runtime_format": 1,
-      "source_revision": "d9552e0e01ed5bdbe12a31d1ce6c0877a4f39580",
-      "summary": "完整 Node.js/npm 开发环境：npm、npx、Corepack、pnpm、Yarn、纯 JS global fetch、child_process 与 iOS arm64 node-gyp/N-API，并支持持久化全局 CLI。",
+      "source_revision": "4608d3c670cf37b383dbe631de4992cf23da46e0",
+      "summary": "Node.js 24.5.0 with npm 11.5.1, Corepack 0.34.0, pnpm/Yarn workflows, iOS-compatible fetch and child_process shims, plus iOS arm64 N-API devkit.",
       "ui": {
         "symbol": "shippingbox.circle.fill",
         "tint": "green"
       },
-      "unpacked_size": 83948544,
-      "version": "runtime-node-18.20.4-f38613c172c3"
+      "unpacked_size": 118626304,
+      "version": "runtime-node-24.5.0-e3a6c25fac33"
     },
     "ollvm": {
       "archive_sha256": "31667a83685e975dfdcd16578a0a386b7b9acc8e5f519b27f6e5d32fdee096b6",
