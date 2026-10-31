@@ -601,8 +601,8 @@
       "version": "runtime-ollvm-23.1.1-e54f2878240e"
     },
     "python": {
-      "archive_sha256": "00945e5dbc001012d619cd0f271ce8157c17f869b6a3e1c0fd5d1253327d6d91",
-      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-python-3.13.14-2f39f70a34ee/PythonRuntime.tar.gz",
+      "archive_sha256": "fc67d7db2cb0fd2933caaf30179693122b9d4c11084b41e8f7fb5535e0b57b64",
+      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-python-3.13.14-3c834a2c8964/PythonRuntime.tar.gz",
       "capabilities": {
         "python.pip": {
           "summary": "Bundled pip with persistent binary-wheel package installs.",
@@ -619,10 +619,10 @@
       },
       "conflicts": [],
       "display_name": "Python",
-      "download_size": 10581384,
+      "download_size": 10581821,
       "group": "tools",
       "handler": "python",
-      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-python-3.13.14-2f39f70a34ee/PythonRuntime.bundle.json",
+      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-python-3.13.14-3c834a2c8964/PythonRuntime.bundle.json",
       "minimum_ios": "15.0",
       "optional": true,
       "order": 20,
@@ -637,7 +637,7 @@
       "python_version": "3.13.14",
       "recommends": [],
       "requires": [],
-      "revision": "2f39f70a34eee72a65b01eeca3a4ecd55d49f7866848bd05a601b769c5fb1102",
+      "revision": "3c834a2c89644c599d54105c47a8666d0364bd2d35f65eb499b74e6250f2ecd9",
       "runtime_format": 3,
       "summary": "CPython 3.13 iOS Runtime，包含常用标准库、pip 与持久化第三方包环境。",
       "ui": {
@@ -645,7 +645,7 @@
         "tint": "indigo"
       },
       "unpacked_size": 39680000,
-      "version": "runtime-python-3.13.14-2f39f70a34ee"
+      "version": "runtime-python-3.13.14-3c834a2c8964"
     },
     "reverse_tools": {
       "archive_sha256": "5a861b1f0220de591b4d500e9eec5b6bc054efdb6964e8d569de9e096f96f801",
