@@ -152,8 +152,8 @@
       "version": "v0.162.1-4"
     },
     "core_tools": {
-      "archive_sha256": "df990b0e9d8f1f829d15c47ea363558d1aa5fa3bceece5c8b25e53cba2ab88ad",
-      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-core-tools-a83d6bcf0cbc/CoreToolsRuntime.tar.gz",
+      "archive_sha256": "40693ac9565efd50a496deeba67964b693863477a117f597c8956aaa007ddbe4",
+      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-core-tools-a7e97567217a/CoreToolsRuntime.tar.gz",
       "capabilities": {
         "core.archive": {
           "summary": "zip/unzip creation, listing and extraction.",
@@ -197,7 +197,7 @@
       },
       "conflicts": [],
       "display_name": "CoreTools",
-      "download_size": 9921359,
+      "download_size": 9921181,
       "group": "tools",
       "handler": "portable-v1",
       "install": {
@@ -234,7 +234,7 @@
           "bin/ca-coretools"
         ]
       },
-      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-core-tools-a83d6bcf0cbc/CoreToolsRuntime.bundle.json",
+      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-core-tools-a7e97567217a/CoreToolsRuntime.bundle.json",
       "minimum_ios": "15.0",
       "optional": false,
       "order": 5,
@@ -250,7 +250,7 @@
       ],
       "recommends": [],
       "requires": [],
-      "revision": "a83d6bcf0cbcfd5e53577822dd20c53d72c91186b72ef8e51f91a87e97aaf93d",
+      "revision": "a7e97567217a616d179a3b000827fdfe501db85049a7c83b8ce272dcba3c6a41",
       "runtime_format": 1,
       "summary": "CodexApp 基础开发工具：Git、HTTPS remote helper、ripgrep、curl、jq，以及 file/diff/patch/zip/unzip。",
       "ui": {
@@ -258,7 +258,7 @@
         "tint": "teal"
       },
       "unpacked_size": 23900929,
-      "version": "runtime-core-tools-a83d6bcf0cbc"
+      "version": "runtime-core-tools-a7e97567217a"
     },
     "node": {
       "archive_sha256": "267278d0baafac4ba2ba4a0afee65f213bb5cad6acfb045ccc1a5732a31dca9c",
