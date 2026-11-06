@@ -152,8 +152,8 @@
       "version": "v0.162.1-4"
     },
     "core_tools": {
-      "archive_sha256": "bc6d2a761667f269f84edd75505fbc6e2122207bc4156ad55c485df8a576efa2",
-      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-core-tools-0b27a4626c41/CoreToolsRuntime.tar.gz",
+      "archive_sha256": "df990b0e9d8f1f829d15c47ea363558d1aa5fa3bceece5c8b25e53cba2ab88ad",
+      "archive_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-core-tools-a83d6bcf0cbc/CoreToolsRuntime.tar.gz",
       "capabilities": {
         "core.archive": {
           "summary": "zip/unzip creation, listing and extraction.",
@@ -197,7 +197,7 @@
       },
       "conflicts": [],
       "display_name": "CoreTools",
-      "download_size": 9921449,
+      "download_size": 9921359,
       "group": "tools",
       "handler": "portable-v1",
       "install": {
@@ -234,7 +234,7 @@
           "bin/ca-coretools"
         ]
       },
-      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-core-tools-0b27a4626c41/CoreToolsRuntime.bundle.json",
+      "metadata_url": "https://github.com/susu123oss/CodexApp-Runtime/releases/download/runtime-core-tools-a83d6bcf0cbc/CoreToolsRuntime.bundle.json",
       "minimum_ios": "15.0",
       "optional": false,
       "order": 5,
@@ -250,15 +250,15 @@
       ],
       "recommends": [],
       "requires": [],
-      "revision": "0b27a4626c4105bab02b3331c62d18882842cc2b75d03a553e6acda0c41dfe07",
+      "revision": "a83d6bcf0cbcfd5e53577822dd20c53d72c91186b72ef8e51f91a87e97aaf93d",
       "runtime_format": 1,
       "summary": "CodexApp 基础开发工具：Git、HTTPS remote helper、ripgrep、curl、jq，以及 file/diff/patch/zip/unzip。",
       "ui": {
         "symbol": "shippingbox.fill",
         "tint": "teal"
       },
-      "unpacked_size": 23899865,
-      "version": "runtime-core-tools-0b27a4626c41"
+      "unpacked_size": 23900929,
+      "version": "runtime-core-tools-a83d6bcf0cbc"
     },
     "node": {
       "archive_sha256": "267278d0baafac4ba2ba4a0afee65f213bb5cad6acfb045ccc1a5732a31dca9c",
